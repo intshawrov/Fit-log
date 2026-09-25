@@ -1,9 +1,12 @@
+import Banner from '@/components/homepage/Banner';
+import Laibary from '@/components/homepage/Laibary';
 import React from 'react';
 
 const page = () => {
   return (
     <div>
-      Homepage
+      <Banner/>
+      <Laibary/>
     </div>
   );
 };
