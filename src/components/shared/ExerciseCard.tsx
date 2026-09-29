@@ -4,6 +4,7 @@ import { FiClock, FiStar } from 'react-icons/fi';
 import { FaFire } from 'react-icons/fa6';
 import { Oswald } from 'next/font/google';
 import { IExercise } from '@/types/exercise-type';
+import Link from 'next/link';
 
 const oswald = Oswald({
     subsets: ['latin'],
@@ -16,6 +17,7 @@ interface IExerciseProps{
 
 const Excercises = ({exercise}: IExerciseProps) => {
     return (
+        <Link href={`/exercises/${exercise.id || exercise.id}`}>
         <div>
             <div
                 
@@ -72,6 +74,7 @@ const Excercises = ({exercise}: IExerciseProps) => {
                 </div>
             </div>
         </div>
+        </Link>
     );
 };
 

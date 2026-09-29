@@ -1,8 +1,17 @@
+"use client";
 import Image from 'next/image';
 import React from 'react';
 import logo from "@/assets/logo.png"
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+
+    const pathname = usePathname();
+
+    const activeStyle = "px-5 py-2.5 rounded-full font-semibold bg-[#28380d] text-[#ccf842]";
+    const inactiveStyle = "px-5 py-2.5 rounded-full font-semibold text-slate-400 hover:text-white transition-colors";
+
     return (
         <div className=' border-b border-[#1C1F26]'>
             <div className="navbar container mx-auto py-5">
@@ -14,24 +23,31 @@ const Navbar = () => {
                         <ul
                             tabIndex={-1}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <li><a>Item 1</a></li>
-                            <li>
-                                <a>Parent</a>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li>
-                            <li><a>Item 3</a></li>
+                            <li><Link href="/">Works Out</Link></li>
+                            <li><Link href="/my-plan">My Plan</Link></li>
                         </ul>
                     </div>
                     <Image src={logo} alt="Fitlog logo" />
                     <a className="btn btn-ghost text-xl uppercase"> Fitlog</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        <li><a>Works Out</a></li>
-                        <li><a>My Plan</a></li>
+                    <ul className="menu menu-horizontal px-1 gap-2">
+                        <li>
+                            <Link 
+                                href="/" 
+                                className={pathname === "/" ? activeStyle : inactiveStyle}
+                            >
+                                Workouts
+                            </Link>
+                        </li>
+                        <li>
+                            <Link 
+                                href="/my-plan" 
+                                className={pathname === "/my-plan" ? activeStyle : inactiveStyle}
+                            >
+                                My Plan
+                            </Link>
+                        </li>
                     </ul>
                 </div>
                 <div className="flex gap-2.5 navbar-end">
