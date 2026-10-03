@@ -111,8 +111,8 @@ const MyPlanPage = () => {
       {activeTab === "today" && (
         <div className="border-base-300 bg-base-100 p-10 space-y-5 rounded-xl">
           {addToExercise?.length > 0 ? (
-            addToExercise.map((exercise: IExercise) => (
-              <TodaysPlanCard key={exercise.exerciseId} exercise={exercise} />
+            addToExercise.map((exercise: IExercise , index) => (
+              <TodaysPlanCard key={exercise.id} exercise={exercise} index={index}/>
             ))
           ) : (
             <div>
@@ -133,7 +133,7 @@ const MyPlanPage = () => {
         <div className="border-base-300 bg-base-100 p-10 space-y-5 rounded-xl">
           {saveToExercise?.length > 0 ? (
             saveToExercise.map((exercise: IExercise) => (
-              <SaveExerciseCard key={exercise.exerciseId} exercise={exercise} />
+              <SaveExerciseCard key={exercise.id} exercise={exercise} />
             ))
           ) : (
             <div>

@@ -11,14 +11,15 @@ import { toast } from 'react-toastify';
 
 interface ITodaysPlanCardProps {
   exercise: IExercise;
+   index: number;
 }
 
-const TodaysPlanCard = ({ exercise }: ITodaysPlanCardProps) => {
+const TodaysPlanCard = ({ exercise , index }: ITodaysPlanCardProps) => {
 
   const context = useContext(ExerciseContext);
 
   const handleRemove = () => {
-    context?.removeFromExercise(exercise.id);
+    context?.removeFromExercise(index);
     toast.success(`${exercise.name} removed successfully!`);
   };
 

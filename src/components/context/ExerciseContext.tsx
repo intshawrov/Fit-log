@@ -13,6 +13,8 @@ import { IExercise } from "@/types/exercise-type";
 type ExerciseContextType = {
   addToExercise: IExercise[];
   setAddToExercise: Dispatch<SetStateAction<IExercise[]>>;
+  saveToExercise: IExercise[];
+  setSaveToExercise: Dispatch<SetStateAction<IExercise[]>>;
   removeFromExercise: (id: number) => void;
 };
 
@@ -32,7 +34,7 @@ export const ExerciseProvider = ({
       prev.filter((_, i) => i !== index)
     );
   };
-  
+
 
 
 
