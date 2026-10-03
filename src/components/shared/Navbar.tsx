@@ -1,11 +1,17 @@
 "use client";
 import Image from 'next/image';
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from "@/assets/logo.png"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import ExerciseContext from "@/components/context/ExerciseContext";
 
 const Navbar = () => {
+
+    const context = useContext(ExerciseContext);
+
+    const addToExercise = context?.addToExercise || [];
+    const saveToExercise = context?.saveToExercise || [];
 
     const pathname = usePathname();
 
@@ -33,16 +39,16 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-2">
                         <li>
-                            <Link 
-                                href="/" 
+                            <Link
+                                href="/"
                                 className={pathname === "/" ? activeStyle : inactiveStyle}
                             >
                                 Workouts
                             </Link>
                         </li>
                         <li>
-                            <Link 
-                                href="/my-plan" 
+                            <Link
+                                href="/my-plan"
                                 className={pathname === "/my-plan" ? activeStyle : inactiveStyle}
                             >
                                 My Plan
@@ -50,9 +56,20 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="flex gap-2.5 navbar-end">
-                    <a className="btn">Plan</a>
-                    <a className="btn">Save</a>
+                <div className="flex gap-5 navbar-end">
+                    <Link href="/my-plan" className=" flex items-center gap-2">
+                        <span>Plan</span>
+                        <span className="badge border-none bg-[#ccf842] text-black font-bold px-2 py-1 rounded-full text-xs">
+                            {addToExercise.length}
+                        </span>
+                    </Link>
+
+                    <Link href="/saved" className=" flex items-center gap-2">
+                        <span>Saved</span>
+                        <span className="badge border-none bg-zinc-700 text-white font-bold px-2 py-1 rounded-full text-xs">
+                            {saveToExercise.length}
+                        </span>
+                    </Link>
                 </div>
             </div>
         </div>

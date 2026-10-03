@@ -7,6 +7,7 @@ import ExerciseContext from "@/components/context/ExerciseContext";
 import TodaysPlanCard from "@/components/shared/TodaysPlanCard";
 import SaveExerciseCard from "@/components/shared/SaveExerciseCard";
 import { IExercise } from "@/types/exercise-type";
+import Link from "next/link";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -114,9 +115,16 @@ const MyPlanPage = () => {
               <TodaysPlanCard key={exercise.exerciseId} exercise={exercise} />
             ))
           ) : (
-            <p className="text-white text-xl font-semibold text-center">
-              No Exercise Details
+            <div>
+              <p className={`${oswald.className} text-white text-xl font-semibold text-center`}>
+              NOTHING HERE YET
             </p>
+            <p className="text-center text-white pt-2">Browse the library and add a lift to get today moving.</p>
+            
+            <Link href="/">
+            <button className="bg-[#C2F10D] text-black py-2.5 px-6 rounded-[99px] block mx-auto mt-4 font-semibold cursor-pointer">Go to WorksOut</button>
+            </Link>
+            </div>
           )}
         </div>
       )}
@@ -128,9 +136,17 @@ const MyPlanPage = () => {
               <SaveExerciseCard key={exercise.exerciseId} exercise={exercise} />
             ))
           ) : (
-            <p className="text-white text-xl font-semibold text-center">
-              No Saved Exercise Details
+            <div>
+              <p className={`${oswald.className} text-white text-xl font-semibold text-center`}>
+              NOTHING HERE YET
             </p>
+            <p className="text-center text-white pt-2">Browse the library and add a lift to get today moving.</p>
+            
+            <Link href="/">
+            <button className="bg-[#C2F10D] text-black py-2.5 px-6 rounded-[99px] block mx-auto mt-4 font-semibold cursor-pointer">Go to WorksOut</button>
+            </Link>
+            </div>
+
           )}
         </div>
       )}

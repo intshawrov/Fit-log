@@ -1,22 +1,29 @@
-
+"use client";
 import { IExercise } from '@/types/exercise-type';
 import Image from 'next/image';
-import React from 'react';
+import Link from 'next/link';
+import React, { useContext } from 'react';
 import { BiStar, BiX } from 'react-icons/bi';
 import { FaClock } from 'react-icons/fa6';
 import { GiFlame } from 'react-icons/gi';
+import { toast } from 'react-toastify';
 
 interface ISaveExerciseCArdProps{
     exercise: IExercise;
 }
 
 const SaveExerciseCard = ({exercise}: ISaveExerciseCArdProps) => {
+
+// const handleRemove = () => {
+//   context?.removeFromSavedExercise(exercise.id);
+//   toast.success(`${exercise.name} removed successfully!`);
+// };
+
     return (
         <div
   key={exercise.id}
   className="flex items-center justify-between p-4 bg-[#111319] border border-gray-800/80 rounded-2xl mb-3 text-white"
 >
-  {/* Bam pasher image ebong info */}
   <div className="flex items-center gap-4">
     <Image
       src={exercise.image}
@@ -33,7 +40,6 @@ const SaveExerciseCard = ({exercise}: ISaveExerciseCArdProps) => {
         {exercise.equipment}
       </p>
 
-      {/* Time, Calorie & Rating row */}
       <div className="flex items-center gap-3 text-xs font-medium text-gray-300 mt-1">
         <div className="flex items-center gap-1.5 text-[#ccff00]">
           <FaClock className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -53,23 +59,22 @@ const SaveExerciseCard = ({exercise}: ISaveExerciseCArdProps) => {
     </div>
   </div>
 
-  {/* Dan pasher Action Buttons (Image onusare shudhu View Details & X icon) */}
   <div className="flex items-center gap-3">
+
+    <Link href={`/exercises/${exercise.id}`}>
     <button
       type="button"
       onClick={() => {
-        /* View details handler */
       }}
       className="px-5 py-2 border border-gray-700/80 rounded-full text-xs font-semibold text-gray-200 hover:bg-gray-800/50 transition"
     >
       View Details
     </button>
+    </Link>
 
     <button
       type="button"
-      onClick={() => {
-        /* Remove handler */
-      }}
+      // onClick={}
       className="p-1 text-gray-500 hover:text-gray-300 transition"
       aria-label="Remove"
     >
