@@ -8,16 +8,21 @@ import { FaClock } from 'react-icons/fa6';
 import { GiFlame } from 'react-icons/gi';
 import { toast } from 'react-toastify';
 
+
 interface ISaveExerciseCArdProps{
     exercise: IExercise;
 }
 
 const SaveExerciseCard = ({exercise}: ISaveExerciseCArdProps) => {
 
+    // const context = useContext(ExerciseContext);
+
+
 // const handleRemove = () => {
-//   context?.removeFromSavedExercise(exercise.id);
-//   toast.success(`${exercise.name} removed successfully!`);
-// };
+
+//     context?.removeFromSavedExercise(exercise.id);
+//     toast.success(`${exercise.name} removed successfully!`);
+//   };
 
     return (
         <div
@@ -74,7 +79,7 @@ const SaveExerciseCard = ({exercise}: ISaveExerciseCArdProps) => {
 
     <button
       type="button"
-      // onClick={}
+      // onClick={handleRemove}
       className="p-1 text-gray-500 hover:text-gray-300 transition"
       aria-label="Remove"
     >

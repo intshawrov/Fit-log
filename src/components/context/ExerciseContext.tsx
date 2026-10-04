@@ -10,12 +10,14 @@ import {
 
 import { IExercise } from "@/types/exercise-type";
 
+
 type ExerciseContextType = {
   addToExercise: IExercise[];
   setAddToExercise: Dispatch<SetStateAction<IExercise[]>>;
   saveToExercise: IExercise[];
   setSaveToExercise: Dispatch<SetStateAction<IExercise[]>>;
   removeFromExercise: (id: number) => void;
+  // removeFromSavedExercise: (id: number)=> void;
 };
 
 const ExerciseContext = createContext<ExerciseContextType | undefined>(
@@ -34,8 +36,9 @@ export const ExerciseProvider = ({
       prev.filter((_, i) => i !== index)
     );
   };
-
-
+// const removeFromSavedExercise = (id: number) => {
+//     setSaveToExercise((prev) => prev.filter((item) => item.id !== id));
+//   };
 
 
   return (
@@ -46,6 +49,7 @@ export const ExerciseProvider = ({
         saveToExercise,
         setSaveToExercise,
         removeFromExercise,
+        // removeFromSavedExercise
       }}
     >
       {children}

@@ -16,35 +16,40 @@ const oswald = Oswald({
 
 interface IExerciseDetailsPage {
     params: {
-        id: number;
+        id: string;
     }
 }
 
-const getExerciseLaibary = async (): Promise<IExercise[]> => {
-    const res = await fetch('https://api.api-store.workers.dev/api/fitlog');
+const getExerciseDetails = async (
+    id: string
+): Promise<IExercise> => {
+    const res = await fetch(
+        `https://api.api-store.workers.dev/api/fitlog/${id}`
+    );
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch exercise details");
+    }
+
     const data = await res.json();
+
     return data;
 };
 
-const ExerciseDetailsPage = async ({ params }: IExerciseDetailsPage) => {
-
+const ExerciseDetailsPage = async ({
+    params,
+}: IExerciseDetailsPage) => {
     const { id } = await params;
 
-    const exerciseData = await getExerciseLaibary();
-
-    const exercise = exerciseData.find((exercise: IExercise) => exercise.id == id) as IExercise;
-
-    console.log(exercise, "exercise")
+    const exercise = await getExerciseDetails(id);
 
     return (
         <main className="min-h-screen bg-[#0c0d10] px-4 py-10 lg:px-6">
             <div className="container mx-auto">
                 <div className="border border-[#222630] bg-[#0f1014] p-5 sm:p-8 lg:p-10">
 
-                    {/* Main Content */}
                     <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
 
-                        {/* Image */}
                         <div className="overflow-hidden rounded-xl">
                             <Image
                                 src={exercise.image}
@@ -56,17 +61,14 @@ const ExerciseDetailsPage = async ({ params }: IExerciseDetailsPage) => {
                             />
                         </div>
 
-                        {/* Details */}
                         <div className="flex flex-col">
 
-                            {/* Title */}
                             <h1
                                 className={`${oswald.className} text-3xl font-bold uppercase leading-tight text-white sm:text-4xl lg:text-5xl`}
                             >
                                 {exercise.name}
                             </h1>
 
-                            {/* Description */}
                             <p className="mt-4 max-w-xl text-sm leading-6 text-gray-400 sm:text-base">
                                 A powerful exercise designed to help you build strength,
                                 improve performance, and train your target muscle groups.
@@ -160,7 +162,7 @@ const ExerciseDetailsPage = async ({ params }: IExerciseDetailsPage) => {
                                     {exercise.muscleGroups.map((muscle) => (
                                         <span
                                             key={muscle}
-                                            className="border border-[#30343d] px-3 py-2 text-sm capitalize text-gray-300"
+                                            className="border border-[#30343d] rounded-xl px-3 py-2 text-sm capitalize text-gray-300"
                                         >
                                             {muscle}
                                         </span>
@@ -168,6 +170,31 @@ const ExerciseDetailsPage = async ({ params }: IExerciseDetailsPage) => {
                                 </div>
                             </div>
 
+
+                            <div className="mt-7">
+                                <h2
+                                    className={`${oswald.className} text-xl font-bold uppercase tracking-wide text-white`}
+                                >
+                                    Instructions
+                                </h2>
+
+                                <ol className="mt-4 space-y-4">
+                                    {exercise.instructions.map(
+                                        (instruction, index) => (
+                                            <li
+                                                key={index}
+                                                className="flex gap-3 text-sm leading-6 text-gray-400"
+                                            >
+                                                <span className="shrink-0 text-gray-500">
+                                                    {index + 1}.
+                                                </span>
+
+                                                <span>{instruction}</span>
+                                            </li>
+                                        )
+                                    )}
+                                </ol>
+                            </div>
                             {/* Buttons */}
 
                             <div className="mt-auto flex flex-wrap gap-3 pt-8">
@@ -186,3 +213,7 @@ const ExerciseDetailsPage = async ({ params }: IExerciseDetailsPage) => {
 
 
 export default ExerciseDetailsPage;
+
+
+
+

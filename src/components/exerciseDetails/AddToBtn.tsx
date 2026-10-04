@@ -18,6 +18,13 @@ const AddToBtn = ({ exercise }: { exercise: IExercise }) => {
   const handleAddToExercise = () => {
     console.log("Add exercise trigger btn:", exercise);
 
+    const isExist = addToExercise.some((item) => item.id === exercise.id);
+
+    if (isExist) {
+      toast.warning(`${exercise.name} is already in today's plan!`);
+      return;
+    }
+
     setAddToExercise((prev) => [...prev, exercise]);
 
     toast.success(`You have added ${exercise.name}`);

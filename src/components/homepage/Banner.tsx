@@ -10,7 +10,7 @@ const oswald = Oswald({
 
 const Banner = () => {
     return (
-        <section className='flex flex-col lg:flex-row items-center justify-between gap-8 container mx-auto bg-[#15171D] p-6 sm:p-10 md:p-14 my-8 md:my-12 border border-[#222630] rounded-2xl '>
+        <section className='flex flex-col lg:flex-row items-center justify-between gap-8 container mx-auto bg-[#15171D] p-6 sm:p-10 md:p-14 my-8 md:my-12 border border-[#222630] rounded-2xl lg:h-[600px]'>
             <div>
                 <p className='text-[#A3E635] text-xs sm:text-sm md:text-base font-medium tracking-wide uppercase mb-2 md:mb-3'>WORKOUT LIBRARY</p>
                 <h1 className={`${oswald.className} text-white text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-tight mb-4 max-w-2xl`}>TRAIN WITH INTENT. LOG EVERY SET.</h1>
@@ -19,7 +19,7 @@ const Banner = () => {
             </div>
 
             <div>
-                <Image src={bannerImage} alt='Banner Image'/>
+                <Image src={bannerImage} alt='Banner Image'  width={450}  height={450} />
             </div>
         </section>
     );

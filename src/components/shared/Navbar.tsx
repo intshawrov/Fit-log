@@ -64,7 +64,7 @@ const Navbar = () => {
                         </span>
                     </Link>
 
-                    <Link href="/saved" className=" flex items-center gap-2">
+                    <Link href="/my-plan" className=" flex items-center gap-2">
                         <span>Saved</span>
                         <span className="badge border-none bg-zinc-700 text-white font-bold px-2 py-1 rounded-full text-xs">
                             {saveToExercise.length}

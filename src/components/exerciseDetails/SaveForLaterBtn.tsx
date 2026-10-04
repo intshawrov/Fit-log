@@ -18,6 +18,13 @@ const SaveForLaterBtn = ({ exercise }: { exercise: IExercise }) => {
   const handleSaveToExercise = () => {
     console.log("Save exercise trigger btn:", exercise);
 
+    const isExist = saveToExercise.some((item) => item.id === exercise.id);
+
+    if (isExist) {
+      toast.warning(`${exercise.name} is already saved!`);
+      return;
+    }
+
     setSaveToExercise((prev) => [...prev, exercise]);
 
     toast.success(`You have saved ${exercise.name}`);

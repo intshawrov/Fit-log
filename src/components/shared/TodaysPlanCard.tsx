@@ -76,10 +76,8 @@ const TodaysPlanCard = ({ exercise , index }: ITodaysPlanCardProps) => {
 
         <button
           type="button"
-          onClick={() => {
-
-          }}
-          className="flex items-center gap-1.5 px-4 py-2 bg-[#ccff00] hover:bg-[#b8e600] text-black font-bold text-xs rounded-full transition"
+           onClick={handleRemove}
+          className="flex items-center gap-1.5 px-4 py-2 bg-[#ccff00] hover:bg-[#b8e600] text-black font-bold text-xs rounded-full transition cursor-pointer"
         >
           <FaCheck className="w-4 h-4 stroke-[3]" />
           Mark as Done
