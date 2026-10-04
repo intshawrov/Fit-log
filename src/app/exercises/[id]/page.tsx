@@ -23,9 +23,6 @@ interface IExerciseDetailsPage {
 const getExerciseDetails = async (
     id: string
 ): Promise<IExercise> => {
-    // const res = await fetch(
-    //     `https://api.api-store.workers.dev/api/fitlog/${id}`
-    // );
     const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/${id}`
     );

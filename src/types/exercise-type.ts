@@ -8,4 +8,5 @@ export interface IExercise {
   caloriesBurned: number;
   rating: number;
   muscleGroups: string[];
+  instructions: string[];
 }
