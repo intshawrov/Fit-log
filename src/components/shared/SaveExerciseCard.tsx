@@ -27,7 +27,7 @@ const SaveExerciseCard = ({exercise}: ISaveExerciseCArdProps) => {
     return (
         <div
   key={exercise.id}
-  className="flex items-center justify-between p-4 bg-[#111319] border border-gray-800/80 rounded-2xl mb-3 text-white"
+  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-[#111319] border border-gray-800/80 rounded-2xl mb-3 text-white gap-4 sm:gap-0"
 >
   <div className="flex items-center gap-4">
     <Image
@@ -35,17 +35,17 @@ const SaveExerciseCard = ({exercise}: ISaveExerciseCArdProps) => {
       alt={exercise.name}
       width={96}
       height={64}
-      className="w-24 h-16 object-cover rounded-xl"
+      className="w-20 h-16 sm:w-24 sm:h-16 object-cover rounded-xl shrink-0"
     />
     <div className="flex flex-col gap-1">
-      <h3 className="font-extrabold text-base tracking-wide uppercase text-white">
+      <h3 className="font-extrabold text-sm sm:text-base tracking-wide uppercase text-white truncate">
         {exercise.name}
       </h3>
       <p className="text-xs text-gray-400 font-medium">
         {exercise.equipment}
       </p>
 
-      <div className="flex items-center gap-3 text-xs font-medium text-gray-300 mt-1">
+      <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs font-medium text-gray-300 mt-1">
         <div className="flex items-center gap-1.5 text-[#ccff00]">
           <FaClock className="w-3.5 h-3.5 stroke-[2.5]" />
           <span className="text-gray-300">{exercise.duration} min</span>
@@ -64,7 +64,7 @@ const SaveExerciseCard = ({exercise}: ISaveExerciseCArdProps) => {
     </div>
   </div>
 
-  <div className="flex items-center gap-3">
+  <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto pt-2 sm:pt-0 border-t border-gray-800/60 sm:border-t-0">
 
     <Link href={`/exercises/${exercise.id}`}>
     <button
